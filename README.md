@@ -10,11 +10,11 @@ The following image shows the web application's appearance and functionality:
 
 ## User Story
 
-I am a company
+AS a company
 
-THAT needs an app
+I need an app
 
-FOR random password generation for my employees
+FOR random password generation 
 
 
 ## Acceptance Criteria
