@@ -1,3 +1,8 @@
+//Initiaze variables
+var characterLength = 10;
+var passwordArray = [];
+var password = "";
+
 // Array of special characters to be included in password
 var specialCharacters = [
   "@",
@@ -88,25 +93,26 @@ var upperCasedCharacters = [
   "Z",
 ];
 
-//Initiaze variables
-var characterLength = 10;
-var passwordArray = [];
+// Get references to the #generate element
+var generateBtn = document.querySelector("#generate");
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
 
 //Function to prompt user for password options - taking the input from user
 function getPasswordOptions() {
   //Prompt - Password length between 10 and 64.
-  var passwordArray = [];
+  passwordArray = [];
   characterLength = parseInt(
     prompt("LENGTH OF PASSWORD: Please, enter a number between 10 and 64.")
   );
-  //expecting for all these conditions to be false
+  //expecting for all these conditions to be false if input correct
   if (characterLength < 10 || characterLength > 64 || isNaN(characterLength)) {
-    // if not, alert as below
     alert("Wrong entry! Please, give a number between 10 and 64.");
     return false;
   }
 
-  //Click OK to confirm including special, numeric, uppercase, lowercase characters.
+  //Click OK to confirm including special, numeric, uppercase, lowercase characters
   if (confirm("Click OK to confirm including special characters.")) {
     passwordArray = passwordArray.concat(specialCharacters);
   }
@@ -125,50 +131,27 @@ function getPasswordOptions() {
   return true;
 }
 
-// Function for getting a random element from an array
-function getRandom(passwordArray) {
-  var password = "";
+// Function to generate random characters
+function getRandom() {
   for (var i = 0; i < characterLength; i++) {
     var randomCharacter = Math.floor(Math.random() * passwordArray.length);
+    password = password + passwordArray[randomCharacter];
   }
-  return passwordArray[randomCharacter];
+  return password;
 }
 
-// Function to generate password with user input
-function generatePassword() {
-  //this will be either true or false
-  var validPrompts = getPasswordOptions();
-
-  if (validPrompts) {
-    var generatedPassword = getRandom();
-    passwordText.value = generatedPassword();
-  } else {
-    passwordText.value = "Wrong input";
-  }
-}
-
-// Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
-
-// 4. Display password to the page.
-function generatePassword() {
-  console.log("Hey, you clicked the button");
-  return "Congratulations! You've generated your password!";
-}
-
-// Write password to the #password input
+// Function to generate password based on user input
 function writePassword() {
-  var password = generatePassword();
+  //this will be either true or false
+  var correctInput = getPasswordOptions();
   var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
+  // Write password on the page
+  if (correctInput) {
+    var generatedPassword = getRandom();
+    passwordText.value = generatedPassword;
+  } else {
+    passwordText.value = "";
+  }
 }
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", generatePassword);
-
-// 1. Prompt the user for password criteria
-//  A. Password length between 10 and 64.
-//  B. Click OK to confirm including special, numeric, uppercase, lowercase characters.
 // 2. Validate the input.
-// 3. Generate password.
