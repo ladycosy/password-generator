@@ -28,7 +28,7 @@ FOR automated random password generation
 
 ## Link to Deployed Application
 
-[Live URL]()
+[Live URL](https://ladycosy.github.io/password-generator/)
 
 ## Link to Project GitHub Repo
 
