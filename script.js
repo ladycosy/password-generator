@@ -92,12 +92,10 @@ var upperCasedCharacters = [
 var characterLength = 10;
 var passwordArray = [];
 
-// Function to prompt user for password options - taking the input from user
+//Function to prompt user for password options - taking the input from user
 function getPasswordOptions() {
   //Prompt - Password length between 10 and 64.
-
   var passwordArray = [];
-
   characterLength = parseInt(
     prompt("LENGTH OF PASSWORD: Please, enter a number between 10 and 64.")
   );
@@ -128,10 +126,26 @@ function getPasswordOptions() {
 }
 
 // Function for getting a random element from an array
-function getRandom(arr) {}
+function getRandom(passwordArray) {
+  var password = "";
+  for (var i = 0; i < characterLength; i++) {
+    var randomCharacter = Math.floor(Math.random() * passwordArray.length);
+  }
+  return passwordArray[randomCharacter];
+}
 
 // Function to generate password with user input
-function generatePassword() {}
+function generatePassword() {
+  //this will be either true or false
+  var validPrompts = getPasswordOptions();
+
+  if (validPrompts) {
+    var generatedPassword = getRandom();
+    passwordText.value = generatedPassword();
+  } else {
+    passwordText.value = "Wrong input";
+  }
+}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -151,15 +165,10 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", generatePassword);
 
 // 1. Prompt the user for password criteria
 //  A. Password length between 10 and 64.
 //  B. Click OK to confirm including special, numeric, uppercase, lowercase characters.
 // 2. Validate the input.
 // 3. Generate password.
-
-// Click OK to confirm including special characters.
-// Click OK to confirm including numeric characters.
-// Click OK to confirm including upper case characters.
-// Click OK to confirm including lower case characters.
