@@ -90,21 +90,42 @@ var upperCasedCharacters = [
 
 //Initiaze variables
 var characterLength = 10;
-var choiceArr = [];
+var passwordArray = [];
 
 // Function to prompt user for password options - taking the input from user
 function getPasswordOptions() {
   //Prompt - Password length between 10 and 64.
+
+  var passwordArray = [];
+
   characterLength = parseInt(
     prompt("LENGTH OF PASSWORD: Please, enter a number between 10 and 64.")
   );
   //expecting for all these conditions to be false
-  if (characterLength < 10 || characterLength > 64 || isNaN(characterLength))
+  if (characterLength < 10 || characterLength > 64 || isNaN(characterLength)) {
     // if not, alert as below
     alert("Wrong entry! Please, give a number between 10 and 64.");
+    return false;
+  }
+
+  //Click OK to confirm including special, numeric, uppercase, lowercase characters.
+  if (confirm("Click OK to confirm including special characters.")) {
+    passwordArray = passwordArray.concat(specialCharacters);
+  }
+
+  if (confirm("Click OK to confirm including numbers.")) {
+    passwordArray = passwordArray.concat(numericCharacters);
+  }
+
+  if (confirm("Click OK to confirm including lower case letters.")) {
+    passwordArray = passwordArray.concat(lowerCasedCharacters);
+  }
+
+  if (confirm("Click OK to confirm including upper case letters.")) {
+    passwordArray = passwordArray.concat(upperCasedCharacters);
+  }
+  return true;
 }
-
-
 
 // Function for getting a random element from an array
 function getRandom(arr) {}
