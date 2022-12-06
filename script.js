@@ -88,13 +88,23 @@ var upperCasedCharacters = [
   "Z",
 ];
 
-function generatePassword() {
-  console.log("Hey, you clicked the button");
-  return "Congratulations! You've generated your password!";
-}
+//Initiaze variables
+var characterLength = 10;
+var choiceArr = [];
 
 // Function to prompt user for password options - taking the input from user
-function getPasswordOptions() {}
+function getPasswordOptions() {
+  //Prompt - Password length between 10 and 64.
+  characterLength = parseInt(
+    prompt("LENGTH OF PASSWORD: Please, enter a number between 10 and 64.")
+  );
+  //expecting for all these conditions to be false
+  if (characterLength < 10 || characterLength > 64 || isNaN(characterLength))
+    // if not, alert as below
+    alert("Wrong entry! Please, give a number between 10 and 64.");
+}
+
+
 
 // Function for getting a random element from an array
 function getRandom(arr) {}
@@ -104,6 +114,12 @@ function generatePassword() {}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
+
+// 4. Display password to the page.
+function generatePassword() {
+  console.log("Hey, you clicked the button");
+  return "Congratulations! You've generated your password!";
+}
 
 // Write password to the #password input
 function writePassword() {
@@ -121,7 +137,6 @@ generateBtn.addEventListener("click", writePassword);
 //  B. Click OK to confirm including special, numeric, uppercase, lowercase characters.
 // 2. Validate the input.
 // 3. Generate password.
-// 4. Display password to the page.
 
 // Click OK to confirm including special characters.
 // Click OK to confirm including numeric characters.
