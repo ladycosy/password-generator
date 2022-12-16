@@ -12,11 +12,13 @@ The following image shows the web application's appearance and functionality:
 
 ## User Story
 
-```AS a company
+```
+AS a company
 
 I need an app which will enable my employees
 
-FOR automated random password generation```
+FOR automated random password generation
+```
 
 
 ## Acceptance Criteria
